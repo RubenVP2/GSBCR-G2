@@ -1,11 +1,37 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "gsb-appli-cr": {
+    "gsbcr": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:module": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +39,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/gsb-appli-cr",
+            "outputPath": "dist/gsbcr",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,7 +50,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "../node_modules/bootstrap/dist/css/bootstrap.css",
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -62,18 +89,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "gsb-appli-cr:build"
+            "browserTarget": "gsbcr:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "gsb-appli-cr:build:production"
+              "browserTarget": "gsbcr:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "gsb-appli-cr:build"
+            "browserTarget": "gsbcr:build"
           }
         },
         "test": {
@@ -88,7 +115,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -110,15 +137,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "gsb-appli-cr:serve"
+            "devServerTarget": "gsbcr:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "gsb-appli-cr:serve:production"
+              "devServerTarget": "gsbcr:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "gsb-appli-cr"
+  "defaultProject": "gsbcr"
 }
