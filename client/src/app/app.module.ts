@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
-import { AppViewComponent } from './app-view/app-view.component';
 import {RouterModule, Routes} from '@angular/router';
 import { AccueilComponent } from './accueil/accueil.component';
 import { AuthService } from './services/auth.service';
@@ -24,7 +23,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     AuthComponent,
-    AppViewComponent,
     AccueilComponent,
     ErreurComponent
   ],
