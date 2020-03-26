@@ -12,6 +12,7 @@ import {AuthGuard} from './services/auth-guard.service';
 import { VisiteComponent } from './visite/visite.component';
 import { MedecinComponent } from './medecin/medecin.component';
 import { MedicamentComponent } from './medicament/medicament.component';
+import {ApiService} from './services/api.service';
 
 // Les Routes
 const appRoutes: Routes = [
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    ApiService
   ],
   bootstrap: [AppComponent]
 })
