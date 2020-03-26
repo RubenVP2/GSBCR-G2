@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "gsbcr": {
@@ -144,6 +144,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "gsbcr"
+    }
+  },
+  "defaultProject": "gsbcr",
+  "cli": {
+    "analytics": "051fc9c4-f6c8-4b54-bd7a-300743f2298c"
+  }
 }
