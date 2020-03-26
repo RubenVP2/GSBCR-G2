@@ -1,0 +1,26 @@
+<div>
+  <form class="form-container">
+      <div class="input-group mb-3">
+        <img src="../../assets/img/gsblogo.png"  alt="LogoGSB" />
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">👩🏻‍💻</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Identifiant" aria-label="Identifiant" aria-describedby="basic-addon1">
+      </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon2">🔑</span>
+      </div>
+      <input type="password" class="form-control" placeholder="Mot de passe" aria-label="Mot de passe" aria-describedby="basic-addon2">
+    </div>
+    <button type="submit" class="btn btn-primary btn-block" *ngIf="!authStatus" (click)="onSignIn()">
+      Se connecter
+    </button>
+  </form>
+</div>
+<button class="btn btn-danger" *ngIf="authStatus" (click)="onSignOut()">
+  Se déconnecter
+</button>
+
