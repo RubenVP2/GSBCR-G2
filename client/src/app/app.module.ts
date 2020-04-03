@@ -13,6 +13,7 @@ import { VisiteComponent } from './visite/visite.component';
 import { MedecinComponent } from './medecin/medecin.component';
 import { MedicamentComponent } from './medicament/medicament.component';
 import {ApiService} from './services/api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 // Les Routes
 const appRoutes: Routes = [
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
