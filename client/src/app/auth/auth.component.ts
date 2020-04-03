@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 export class AuthComponent implements OnInit {
   // Variables
   authStatus: boolean;
-  
+
   visiteurs: any[];
   visiteurSubscription: Subscription;
 
@@ -26,13 +26,12 @@ export class AuthComponent implements OnInit {
     this.visiteurSubscription = this.authService.visiteurSubject.subscribe(
     (visiteurs: any[]) => {
       this.visiteurs= visiteurs;
-      console.log(this.visiteurs)
+      console.log(this.visiteurs);
     }
       );
     this.authService.emitVisiteurSubject();
 
   }
- 
 
   onSignIn() {
     this.authService.signIn().then(

@@ -15,7 +15,7 @@ emitVisiteurSubject(){
 
 constructor(private httpClient: HttpClient){}
 
-getAllVisiteurs(){
+getAllVisiteurs() {
   this.httpClient.get<any[]>('https://webserv-gr2.sio-carriat.com/gsbapi/').subscribe(
   (response) => {
     this.visiteurs = response;
