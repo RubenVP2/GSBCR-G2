@@ -1,16 +1,48 @@
 <div class="col-12 mt-5">
-  <h3 class="mb-3">Rechercher un médicament</h3>
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text" id="basic-addon1">🔎</span>
-    </div>
-    <input type="text" class="form-control" placeholder="Rechercher votre médicament" aria-label="Username" aria-describedby="basic-addon1">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button" id="searchMed">Rechercher</button>
-    </div>
-  </div>
+  <form class="form-search">
+    <mat-form-field class="example-full-width">
+      <input type="text" placeholder="Rechercher votre médicament" aria-label="String" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredMed | async" [value]="option.nomCommercial" (click)="showDetails(option)">
+          {{ option.nomCommercial }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
 </div>
 
-<div class="col-12">
+<div class="col-12" *ngIf="viewDetails">
+  <form (ngSubmit)="onSubmit($event)" class="form-detail mt-5">
+    <!-- idMed -->
+      <input matInput placeholder="id Medicament" name="idMed" value="{{ leMed.idMed }}" [ngStyle]="{'display':'none'}" >
+<!--  Nom commercial  -->
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Nom commercial" value="{{ leMed.nomCommercial }}" [disabled]="true">
+    </mat-form-field>
+<!-- Famille -->
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Famille" value="{{ leMed.famille }}" [disabled]="true" >
+    </mat-form-field>
+<!-- Composition -->
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Composition" name="composition" value="{{ leMed.composition }}" [disabled]="isEditable"  >
+    </mat-form-field>
+<!-- Effet -->
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Effets" name="effets" [disabled]="isEditable"  >{{ leMed.effet }}</textarea>
+    </mat-form-field>
+<!-- Contre indication -->
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Contre indication" name="contreIndications" [disabled]="isEditable" >{{ leMed.contreIndication }}</textarea>
+    </mat-form-field>
+<!-- Bouton -->
+    <div class="col-12 text-center">
+      <button type="submit" class="mr-3" mat-flat-button color="primary" *ngIf="!isEditable">Sauvegarder les modifications</button>
+      <button mat-flat-button color="warn" *ngIf="!isEditable" (click)="makeEditable()">Annuler les modifications</button>
+    </div>
+  </form>
+</div>
 
+<div class="col-12 text-center mt-2" *ngIf="viewDetails">
+  <button mat-flat-button color="primary" *ngIf="isEditable" (click)="makeEditable()">Modifier les informations</button>
 </div>
