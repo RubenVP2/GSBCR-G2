@@ -1,0 +1,14 @@
+.form-search {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  font-size: x-large;
+}
+
+.form-detail {
+  font-size: large;
+}
+
+.example-full-width {
+  width: 100%;
+}
