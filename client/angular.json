@@ -49,6 +49,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/styles.css"
             ],
             "scripts": []
@@ -146,8 +147,5 @@
       }
     }
   },
-  "defaultProject": "gsbcr",
-  "cli": {
-    "analytics": "051fc9c4-f6c8-4b54-bd7a-300743f2298c"
-  }
+  "defaultProject": "gsbcr"
 }

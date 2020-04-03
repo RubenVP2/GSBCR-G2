@@ -1,2 +1,36 @@
-<p>{{title}} works!</p>
-<p>Updated</p>
+<div class="col-12 mt-5">
+  <h3 class="mb-3">Rechercher un médecin</h3>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">🔎</span>
+    </div>
+    <input type="text" class="form-control" placeholder="Rechercher un médecin" aria-label="Username" aria-describedby="basic-addon1" id="medecinName" (keyup.enter)="getMedecins()" >
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" id="searchMed" (click)="getMedecins()">Rechercher</button>
+    </div>
+  </div>
+</div>
+
+<div>
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Telephone</th>
+      <th>Adresse</th>
+      <th>Departement</th>
+  </tr>
+  </thead>
+  
+  <tbody>
+  <tr *ngFor= "let medecin of medecins">
+  <td>{{medecin.nom}} </td>
+  <td>{{medecin.prenom}} </td>
+  <td>{{medecin.tel}} </td>
+  <td>{{medecin.adresse}} </td>
+  <td>{{medecin.departement}} </td>
+  </tr>
+  </tbody>
+  </table>
+</div>
