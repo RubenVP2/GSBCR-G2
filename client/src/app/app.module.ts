@@ -13,6 +13,8 @@ import { MedecinComponent } from './medecin/medecin.component';
 import { MedicamentComponent } from './medicament/medicament.component';
 import {ApiService} from './services/api.service';
 import { HttpClientModule } from '@angular/common/http';
+<<<<<<< HEAD
+=======
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -20,6 +22,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
+>>>>>>> 69751822cca100b25e2a51c440219ef92b8d4ac0
 
 // Les Routes
 const appRoutes: Routes = [
@@ -47,6 +50,9 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+<<<<<<< HEAD
+    RouterModule.forRoot(appRoutes)
+=======
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
@@ -56,6 +62,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MatTableModule,
     MatButtonModule
+>>>>>>> 69751822cca100b25e2a51c440219ef92b8d4ac0
   ],
   providers: [
     AuthService,
