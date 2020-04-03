@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../services/api.service';
 import {Observable, Subscription} from 'rxjs';
 import {debounceTime, map, startWith, switchMap} from 'rxjs/operators';
-import { FormControl, FormGroup, NgForm} from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import {Medicament} from '../models/medicament.model';
 
 @Component({
@@ -17,7 +17,6 @@ export class MedicamentComponent implements OnInit {
   filteredMed: Observable<any[]>;
   leMed: Medicament = new Medicament();
   isEditable: boolean;
-  userForm: FormGroup;
 
   constructor(private apiService: ApiService) {}
 
