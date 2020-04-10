@@ -1,9 +1,9 @@
 <div class="col-12 mt-5">
   <form class="form-search">
     <mat-form-field class="example-full-width">
-      <input type="text" placeholder="Rechercher votre médicament" aria-label="String"  matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <input type="text" placeholder="Rechercher votre médicament" aria-label="String" matInput [formControl]="myControl" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredMed | async" [value]="option.nomCommercial" (click)="showDetails(option)">
+        <mat-option (click)="showDetails(option)" *ngFor="let option of filteredMed | async" [value]="option.nomCommercial">
           {{ option.nomCommercial }}
         </mat-option>
       </mat-autocomplete>
@@ -25,15 +25,15 @@
     </mat-form-field>
 <!-- Composition -->
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Composition" name="composition" value="{{ leMed.composition }}" [disabled]="isEditable"  >
+      <input matInput placeholder="Composition" name="composition" value="{{ leMed.composition }}" [disabled]="isEditable" required>
     </mat-form-field>
 <!-- Effet -->
     <mat-form-field class="example-full-width">
-      <textarea matInput placeholder="Effets" name="effets" [disabled]="isEditable"  >{{ leMed.effet }}</textarea>
+      <textarea matInput placeholder="Effets" name="effets" [disabled]="isEditable" required>{{ leMed.effet }}</textarea>
     </mat-form-field>
 <!-- Contre indication -->
     <mat-form-field class="example-full-width">
-      <textarea matInput placeholder="Contre indication" name="contreIndications" [disabled]="isEditable" >{{ leMed.contreIndication }}</textarea>
+      <textarea matInput placeholder="Contre indication" name="contreIndications" [disabled]="isEditable" required>{{ leMed.contreIndication }}</textarea>
     </mat-form-field>
 <!-- Bouton -->
     <div class="col-12 text-center">

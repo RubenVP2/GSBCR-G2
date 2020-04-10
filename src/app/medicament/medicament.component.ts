@@ -63,6 +63,9 @@ export class MedicamentComponent implements OnInit {
     const composition = event.target.composition.value;
     const effets = event.target.effets.value;
     const contreIndications = event.target.contreIndications.value;
-    this.apiService.saveMedicament(idMed, composition, effets, contreIndications);
+    // Souscription
+    this.apiService.saveMedicament(idMed, composition, effets, contreIndications).subscribe();
+    this.isEditable = true;
+    alert('Modification effectué !');
   }
 }
