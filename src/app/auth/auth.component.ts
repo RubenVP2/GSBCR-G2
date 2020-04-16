@@ -26,7 +26,6 @@ export class AuthComponent implements OnInit {
     this.visiteurSubscription = this.authService.visiteurSubject.subscribe(
     (visiteurs: any[]) => {
       this.visiteurs= visiteurs;
-      console.log(this.visiteurs);
     }
       );
     this.authService.emitVisiteurSubject();

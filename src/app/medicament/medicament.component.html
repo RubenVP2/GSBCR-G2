@@ -2,8 +2,8 @@
   <form class="form-search">
     <mat-form-field class="example-full-width">
       <input type="text" placeholder="Rechercher votre médicament" aria-label="String" matInput [formControl]="myControl" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
-          <mat-option (click)="showDetails(option)" *ngFor="let option of filteredMed | async" [value]="option.nomCommercial">
+      <mat-autocomplete (optionSelected)="showDetails($event)" #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredMed | async" [value]="option.nomCommercial + '-' + option.id">
             {{ option.nomCommercial }}
           </mat-option>
       </mat-autocomplete>
@@ -42,7 +42,98 @@
     </div>
   </form>
 </div>
-
 <div class="col-12 text-center mt-2" *ngIf="viewDetails">
   <button mat-flat-button color="primary" *ngIf="isEditable" (click)="makeEditable()">Modifier les informations</button>
 </div>
+
+<!--button affiche la fenêtre modal-->
+<button type="button" class="btn view-map"  data-toggle="modal" data-target="#exampleModal"
+        #tooltip="matTooltip"
+        matTooltip="Qui à reçu ce médicament ?"
+        matTooltipPosition="above"
+        aria-label="bouton qui affiche des détails sur un logo" *ngIf="viewDetails">
+  <img  src="../../assets/img/eye_logo.png" alt="eye_logo">
+</button>
+
+<!-- bouton ajout d'un médicament -->
+<button type="button" class="btn add-med"  data-toggle="modal" data-target="#modal-form"
+        #tooltip2="matTooltip"
+        matTooltip="Ajouter un médicament"
+        matTooltipPosition="above"
+        aria-label="bouton qui permet d'ajouter un médicament" *ngIf="viewDetails">
+  <img  src="../../assets/img/add_logo.png" alt="add_logo">
+</button>
+<!--Modal pour le formulaire d'ajout-->
+<div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Ajout d'un médicament</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="form-add-med">
+          <mat-form-field>
+            <input matInput placeholder="Nom Commercial">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select placeholder="Famille">
+<!--      TODO BOUCLE POUR AFFICHER LES FAMILLES        -->
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Composition">
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput placeholder="Effets"></textarea>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput placeholder="Contre indications"></textarea>
+          </mat-form-field>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal pour la carte -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Médecins ayant reçu ce médicament</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-12 mt-2 mb-2">
+          <!--  Centre la map sur Paris grâce au property binding -->
+          <agm-map [latitude]="lat" [longitude]="lng" [zoom]="6">
+            <agm-marker
+              *ngFor="let m of markers;let i = index;"
+              [latitude]="m.geometry.location.lat"
+              [longitude]="m.geometry.location.lng"
+              [title]="address[i].identite + '\n' + m.formatted_address"
+              [markerDraggable]="false">
+            </agm-marker>
+          </agm-map>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+

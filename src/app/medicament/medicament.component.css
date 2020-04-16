@@ -12,3 +12,45 @@
 .example-full-width {
   width: 100%;
 }
+
+agm-map{
+  height: 500px;
+}
+
+.view-map{
+  position: fixed;
+  right: 85px;
+  top: 50%;
+  border-radius: 40px;
+  background: #f0f0f0;
+  box-shadow:  16px 16px 32px #bebebe,
+  -16px -16px 32px #ffffff;
+}
+
+.view-map img {
+  height: 75px;
+  width: 75px;
+}
+
+.add-med{
+  position: fixed;
+  right: 85px;
+  top: 35%;
+  border-radius: 40px;
+  background: #f0f0f0;
+  box-shadow:  16px 16px 32px #bebebe,
+  -16px -16px 32px #ffffff;
+}
+
+.add-med img {
+  height: 75px;
+  width: 75px;
+}
+
+#form-add-med{
+  display: flex;
+  flex-direction: column;
+}
+#form-add-med > * {
+  width: 100%;
+}

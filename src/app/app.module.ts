@@ -20,6 +20,9 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
+import {AgmCoreModule} from '@agm/core';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSelectModule} from '@angular/material/select';
 
 // Les Routes
 const appRoutes: Routes = [
@@ -43,21 +46,25 @@ const appRoutes: Routes = [
     MedecinComponent,
     MedicamentComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    RouterModule.forRoot(appRoutes),
-    ReactiveFormsModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatAutocompleteModule,
-    MatInputModule,
-    RouterModule.forRoot(appRoutes),
-    MatTableModule,
-    MatButtonModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        RouterModule.forRoot(appRoutes),
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyCSQ6KEgdu4BypeiP4SiK23X-j2BxhzVHw'
+        }),
+        ReactiveFormsModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatAutocompleteModule,
+        MatInputModule,
+        MatTableModule,
+        MatButtonModule,
+        MatTooltipModule,
+        MatSelectModule
+    ],
   providers: [
     AuthService,
     AuthGuard,

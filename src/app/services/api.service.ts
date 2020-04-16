@@ -23,12 +23,28 @@ export class ApiService {
   }
 
   /**
+   * Récupère les infos d'un médicament
+   * @param idMed
+   */
+  getUnMedicament(idMed: string) {
+    return this.httpClient.get(this.urlApi + '?idMed=' + idMed).pipe(map( (res: any) => res));
+  }
+
+  /**
    * Récupère le libelle d'une famille d'un médicament depuis son code
    * map() = elle prend des valeurs en entrée, les transforme et les renvoie en sortie comme pour tap et d'autre encore.
    * @param codeFamille
    */
   getFamilleOfMedicament(codeFamille: string) {
     return this.httpClient.get(this.urlApi + '?idFam=' + codeFamille).pipe(map((res: any) => res));
+  }
+
+  /**
+   * Retourne les adresses depuis un médicament ainsi que le nom + prenom
+   * @param idMed
+   */
+  getAdresseFromMedicament(idMed: string) {
+    return this.httpClient.get(this.urlApi + '?idMed3=' + idMed).pipe(map((res: any) => res));
   }
 
   /**
