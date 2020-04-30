@@ -59,4 +59,19 @@ export class ApiService {
     return this.httpClient.get(this.urlApi + '?idMed2=' + idMed + '&composition=' + composition + '&effets=' + effets + '&contreIndications=' + contreIndications).pipe(map((res: any) => res));
   }
 
+  /**
+   * Retourne la liste des familles de la bdd
+   */
+  getLesFamilles() {
+    return this.httpClient.get(this.urlApi + '?getFams').pipe(map( (res: any) => res));
+  }
+
+  /**
+   * Ajoute un médicament à la table medicaments
+   */
+  addMedicament(id: string , nom: string, idFam: string, composition: string, effets: string, contre: string) {
+    // tslint:disable-next-line:max-line-length
+    return this.httpClient.get(this.urlApi + '?idMed4=' +  id + '&nom=' + nom + '&Fam=' + idFam + '&composition=' + composition + '&effets=' + effets + '&contreIndications=' + contre).pipe(map( (res: any) => res));
+  }
+
 }

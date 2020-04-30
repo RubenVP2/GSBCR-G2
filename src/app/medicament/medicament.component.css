@@ -54,3 +54,7 @@ agm-map{
 #form-add-med > * {
   width: 100%;
 }
+
+#back{
+  cursor: pointer;
+}

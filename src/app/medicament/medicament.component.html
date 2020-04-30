@@ -1,5 +1,5 @@
 <div class="col-12 mt-5">
-  <form class="form-search">
+  <form class="form-search" *ngIf="viewSearchBar">
     <mat-form-field class="example-full-width">
       <input type="text" placeholder="Rechercher votre médicament" aria-label="String" matInput [formControl]="myControl" [matAutocomplete]="auto">
       <mat-autocomplete (optionSelected)="showDetails($event)" #auto="matAutocomplete">
@@ -56,54 +56,46 @@
 </button>
 
 <!-- bouton ajout d'un médicament -->
-<button type="button" class="btn add-med"  data-toggle="modal" data-target="#modal-form"
+<button type="button" class="btn add-med"
         #tooltip2="matTooltip"
         matTooltip="Ajouter un médicament"
         matTooltipPosition="above"
-        aria-label="bouton qui permet d'ajouter un médicament" *ngIf="viewDetails">
+        aria-label="bouton qui permet d'ajouter un médicament" *ngIf="viewDetails" (click)="toogleShow()">
   <img  src="../../assets/img/add_logo.png" alt="add_logo">
 </button>
-<!--Modal pour le formulaire d'ajout-->
-<div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog  modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title">Ajout d'un médicament</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form id="form-add-med">
-          <mat-form-field>
-            <input matInput placeholder="Nom Commercial">
-          </mat-form-field>
 
-          <mat-form-field>
-            <mat-select placeholder="Famille">
-<!--      TODO BOUCLE POUR AFFICHER LES FAMILLES        -->
-            </mat-select>
-          </mat-form-field>
+<div class="col-12" *ngIf="viewForm">
 
-          <mat-form-field>
-            <input matInput placeholder="Composition">
-          </mat-form-field>
+  <span id="back" (click)="toogleShow()" style="font-size: 1em; color: DodgerBlue;">
+    <fa-icon [icon]="faArrowLeft"></fa-icon>
+    Revenir en arrière
+  </span>
 
-          <mat-form-field>
-            <textarea matInput placeholder="Effets"></textarea>
-          </mat-form-field>
+  <form #f= "ngForm" (ngSubmit)="onSubmitAddMedicament(f)" id="form-add-med">
+    <mat-form-field>
+      <input name="nom" [ngModel]="formMed.nomCommercial" matInput placeholder="Nom Commercial" required maxlength="80">
+    </mat-form-field>
 
-          <mat-form-field>
-            <textarea matInput placeholder="Contre indications"></textarea>
-          </mat-form-field>
+    <mat-form-field>
+      <mat-select name="famille" [ngModel]="formMed.famille
+" placeholder="Famille" required>
+        <mat-option *ngFor="let f of familles" value="{{ f.id }}">{{ f.libelle }}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-      </div>
-    </div>
-  </div>
+    <mat-form-field>
+      <input name="composition" [ngModel]="formMed.composition" matInput placeholder="Composition" maxlength="255" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea name="effets" [ngModel]="formMed.effet" matInput placeholder="Effets" maxlength="255" required></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea name="contre-indication" [ngModel]="formMed.contreIndication" matInput placeholder="Contre indications" maxlength="255" required></textarea>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!f.form.valid" >Ajouter le médicament</button>
+  </form>
 </div>
 
 <!-- Modal pour la carte -->

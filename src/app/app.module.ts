@@ -23,6 +23,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {AgmCoreModule} from '@agm/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // Les Routes
 const appRoutes: Routes = [
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
         MatTableModule,
         MatButtonModule,
         MatTooltipModule,
-        MatSelectModule
+        MatSelectModule,
+        FontAwesomeModule
     ],
   providers: [
     AuthService,
